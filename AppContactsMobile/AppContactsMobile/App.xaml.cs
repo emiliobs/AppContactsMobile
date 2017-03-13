@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using AppContactsMobile.Views;
 using Xamarin.Forms;
 
 namespace AppContactsMobile
@@ -13,7 +13,7 @@ namespace AppContactsMobile
         {
             InitializeComponent();
 
-            MainPage = new AppContactsMobile.MainPage();
+            MainPage = new  NavigationPage(new ContactsView());
         }
 
         protected override void OnStart()
