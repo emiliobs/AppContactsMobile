@@ -1,6 +1,10 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Bcl": "1.1.10",
+    "Microsoft.Bcl.Build": "1.0.21",
+    "Microsoft.Net.Http": "2.2.29",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "MvvmLightLibs": "5.4.0-alpha",
     "Xamarin.Forms": "2.3.4.212-pre4"
   },
   "frameworks": {
