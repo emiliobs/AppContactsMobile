@@ -5,6 +5,7 @@
     "Microsoft.Net.Http": "2.2.29",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "MvvmLightLibs": "5.4.0-alpha",
+    "Xam.Plugins.Forms.ImageCircle": "1.8.2.19-beta",
     "Xamarin.Forms": "2.3.4.212-pre4"
   },
   "frameworks": {
