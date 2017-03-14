@@ -34,7 +34,7 @@
                                 <StackLayout Grid.Column="1">
 
                                     <Label
-                                        TextColor="AntiqueWhite"
+                                        TextColor="Coral"
                                 FontSize="Medium"
                                 FontAttributes="Bold"
                                 VerticalOptions="Center"
@@ -42,14 +42,14 @@
                                     </Label>
 
                                     <Label
-                                        TextColor="AntiqueWhite"
+                                        TextColor="Coral"
                                 FontAttributes="Bold"
                                 VerticalOptions="Center"
                                 Text="{Binding PhoneNumber, StringFormat='Phone Number: {0}'}">
                                     </Label>
 
                                     <Label
-                                        TextColor="AntiqueWhite"
+                                        TextColor="Coral"
                                 FontAttributes="Bold"
                                 VerticalOptions="Center"
                                 Text="{Binding EmailAddress, StringFormat='E-mail: {0}'}">
@@ -71,5 +71,9 @@
 
 
     </ScrollView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_location.png" Text="New Contacts." Command="{Binding NewContactCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
 
 </ContentPage>

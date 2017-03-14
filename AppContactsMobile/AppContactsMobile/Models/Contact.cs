@@ -32,7 +32,7 @@ namespace AppContactsMobile.Models
             {
                 if (string.IsNullOrEmpty(Image))
                 {
-                    return "contact.png";
+                    return "Avatar.png";
                 }
 
                 return $"http://contactsbackend.azurewebsites.net{Image.Substring(1)}";

@@ -4,8 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using AppContactsMobile.Classes;
 using AppContactsMobile.Models;
+using AppContactsMobile.Services;
+using AppContactsMobile.Views;
+using GalaSoft.MvvmLight.Command;
 
 namespace AppContactsMobile.ViewModel
 {
@@ -15,12 +19,17 @@ namespace AppContactsMobile.ViewModel
 
         private ApiService apiService;
         private DialogService dialogService;
+        private NavigationService navigationService;
 
         #endregion
 
         #region Properties
 
         public ObservableCollection<ContactItemViewModel> Contacts { get; set; }
+
+        public NewContactView NewContactView { get; set; }
+
+       
 
         #endregion
 
@@ -29,7 +38,8 @@ namespace AppContactsMobile.ViewModel
         public MainViewModel()
         {
             apiService = new ApiService();
-            dialogService = new DialogService();       
+            dialogService = new DialogService();    
+            navigationService = new NavigationService();
 
             Contacts = new ObservableCollection<ContactItemViewModel>();
 
@@ -41,6 +51,20 @@ namespace AppContactsMobile.ViewModel
 
 
         #region Command
+
+        public ICommand NewContactCommand
+        {
+            get { return new RelayCommand(NewContact); }
+        }
+
+        private async void NewContact()
+        {
+            //Llamo a la clase NewCpntactviewModel 
+            //solo en el momento que se necesita. no en el contructor para evitar memoria inecesaria:
+           NewContactView = new NewContactView();
+
+           await navigationService.Navigate("NewContactView");
+        }
 
         #endregion
 
