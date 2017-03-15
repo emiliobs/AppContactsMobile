@@ -13,10 +13,9 @@ namespace AppContactsMobile.Classes
         {
             using (MemoryStream ms = new MemoryStream())
             {
-               input.CopyTo(ms);
-
+                input.CopyTo(ms);
                 return ms.ToArray();
-            } 
+            }
         }
     }
 }
