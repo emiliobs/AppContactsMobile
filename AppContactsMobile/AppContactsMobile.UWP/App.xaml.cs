@@ -76,6 +76,11 @@ namespace AppContactsMobile.UWP
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+
+            //Plugin.Media.MediaImplementation.OnFilesPicked(e);
+            //base.OnActivated(e);
+
+
             // Ensure the current window is active
             Window.Current.Activate();
         }

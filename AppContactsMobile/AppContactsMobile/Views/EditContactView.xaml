@@ -1,23 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppContactsMobile.Views.NewContactView"
+             x:Class="AppContactsMobile.Views.EditContactView"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             Title="New Contacts."
+             Title="Edit Contacts." 
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImage="fondosContact.jpg">
 
-    <ScrollView
-        BindingContext="{Binding NewContactViewModel }">
-        <StackLayout
-            Padding="8">
+    <ScrollView BindingContext="{Binding EditContact}">
+
+        <StackLayout Padding="8">
+            
             <Label TextColor="Coral"
                 Text="First name">
             </Label>
+            
             <Entry   BackgroundColor="White"
                 Placeholder="Enter first name..."
                 Text="{Binding FirstName, Mode=TwoWay}">
             </Entry>
+
             <Label TextColor="Coral"
                 Text="Last name">
             </Label>
@@ -40,37 +42,42 @@
                 Text="{Binding PhoneNumber, Mode=TwoWay}">
             </Entry>
 
-            <controls:CircleImage Source="{Binding  Imagesource}" Aspect="AspectFill"></controls:CircleImage>
-            
-            <ActivityIndicator
-                IsRunning="{Binding IsRunning}">
-            </ActivityIndicator>
+            <controls:CircleImage 
+                Source="{Binding ImaheFullPath}" 
+                Aspect="AspectFill"
+                WidthRequest="300"
+                HeightRequest="300">
+            </controls:CircleImage>
+
+           <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>
+
             <StackLayout
                 Orientation="Horizontal">
-                <!--<Button
-                    HorizontalOptions="FillAndExpand"
-                    Command="{Binding TakePictureCommand}"
-                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                    BackgroundColor="Orange"
-                    TextColor="White"
-                    Text="Take Picture">
-                </Button>-->
-
                 <Image  HorizontalOptions="FillAndExpand" Source="ic_add_a_photo.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TakePictureCommand}"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
-                
                 <Button
                     HorizontalOptions="FillAndExpand"
-                    Command="{Binding NewContactCommand}"
+                    Command="{Binding SaveContactCommand}"
                     IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                    BackgroundColor="DarkSalmon"
+                    BackgroundColor="Navy"
                     TextColor="White"
-                    Text="New Contact">
+                    Text="Save">
+                </Button>
+                <Button
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding DeleteContactCommand}"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    Text="Delete">
                 </Button>
             </StackLayout>
+
+
+
         </StackLayout>
     </ScrollView>
 

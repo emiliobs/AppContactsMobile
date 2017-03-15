@@ -17,6 +17,10 @@
             <DataTemplate x:Key="ContactsDataTemplate">
                 <ViewCell>
                     <Grid Padding="8">
+                        
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EditContactCommand}"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>

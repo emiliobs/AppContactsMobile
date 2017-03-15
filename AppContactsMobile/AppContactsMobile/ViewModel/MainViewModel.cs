@@ -35,6 +35,8 @@ namespace AppContactsMobile.ViewModel
 
         public NewContactViewModel NewContactViewModel { get; set; }
 
+        public EditContactViewModel EditContact { get; set; }
+
         public bool IsRefresh
         {
             set
@@ -64,9 +66,7 @@ namespace AppContactsMobile.ViewModel
 
             Contacts = new ObservableCollection<ContactItemViewModel>();
 
-          //  LoadContact();
-
-            //Intance singleton:
+          //Intance singleton:
             instance = this;
         }
 
@@ -93,7 +93,9 @@ namespace AppContactsMobile.ViewModel
         {
             get { return new RelayCommand(NewContact); }
         }
-             
+
+        
+
         private async void NewContact()
         {
             //Llamo a la clase NewCpntactviewModel 

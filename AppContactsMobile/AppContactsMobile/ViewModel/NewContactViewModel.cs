@@ -11,6 +11,9 @@ using AppContactsMobile.Classes;
 using AppContactsMobile.Models;
 using AppContactsMobile.Services;
 using GalaSoft.MvvmLight.Command;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Xamarin.Forms;
 
 namespace AppContactsMobile.ViewModel
 {
@@ -23,6 +26,9 @@ namespace AppContactsMobile.ViewModel
         private ApiService apiService;
         private NavigationService navigationService;
 
+        private ImageSource imageSource;
+        private MediaFile file;
+
         private bool isRunning;
         private bool isEnabled;
 
@@ -30,6 +36,21 @@ namespace AppContactsMobile.ViewModel
 
 
         #region Properties
+
+
+        public ImageSource Imagesource
+        {
+            set
+            {
+                if (imageSource != value)
+                {
+                    imageSource = value;
+                    OnPropertyChanged();
+                }
+            }
+
+            get { return imageSource; }
+        }
 
         public bool IsRunning
         {
@@ -89,6 +110,42 @@ namespace AppContactsMobile.ViewModel
             get { return  new RelayCommand(NewContact);}
         }
 
+        public ICommand TakePictureCommand
+        {
+            get { return  new RelayCommand(TakePicture);}
+        }
+
+        private async void TakePicture()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await dialogService.ShowMessage("No Camara", ":(No Camera Available.)");
+            }
+
+            file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+            {
+                Directory = "Sample",
+                Name = "test.jpg",
+                PhotoSize = PhotoSize.Small,
+            });
+
+            IsRunning = true;
+
+            if (file != null)
+            {
+                 Imagesource = ImageSource.FromStream(() =>
+                 {
+                     var stream = file.GetStream();
+                     return stream;
+                 });
+            }
+
+            IsRunning = false;
+        }
+
+
         private async void NewContact()
         {
             if (string.IsNullOrEmpty(FirstName))
@@ -104,7 +161,25 @@ namespace AppContactsMobile.ViewModel
             }
 
 
-            var response = await apiService.Post("http://contactsbackend.azurewebsites.net", "/api", "/Contacts", this);
+            var imageArray = FilesHelper.ReadFully(file.GetStream());
+            file.Dispose();
+
+            var contact = new Contact()
+            {
+                LastName = LastName,
+                FirstName = FirstName,
+                ImageArray = imageArray,
+               PhoneNumber = PhoneNumber,
+               
+            };
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            var response = await apiService.Post("http://contactsbackend.azurewebsites.net", "/api", "/Contacts", contact);
+
+            IsRunning = false;
+            IsEnabled = true;
 
             if (!response.IsSuccess)
             {
