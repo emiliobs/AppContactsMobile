@@ -45,8 +45,8 @@
             <controls:CircleImage 
                 Source="{Binding ImaheFullPath}" 
                 Aspect="AspectFill"
-                WidthRequest="300"
-                HeightRequest="300">
+                WidthRequest="200"
+                HeightRequest="200">
             </controls:CircleImage>
 
            <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>

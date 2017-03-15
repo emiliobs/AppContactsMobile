@@ -39,9 +39,11 @@ namespace AppContactsMobile.ViewModel
 
         private async void EditContact()
         {
-            
 
-            await navigationService.EditContact(this);
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditContact = new EditContactViewModel(this);
+
+            await navigationService.Navigate("EditContactView");
         }
 
         #endregion
