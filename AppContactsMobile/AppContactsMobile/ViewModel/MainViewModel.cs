@@ -27,7 +27,7 @@ namespace AppContactsMobile.ViewModel
 
         public ObservableCollection<ContactItemViewModel> Contacts { get; set; }
 
-        public NewContactView NewContactView { get; set; }
+        public NewContactViewModel NewContactViewModel { get; set; }
 
        
 
@@ -61,7 +61,7 @@ namespace AppContactsMobile.ViewModel
         {
             //Llamo a la clase NewCpntactviewModel 
             //solo en el momento que se necesita. no en el contructor para evitar memoria inecesaria:
-           NewContactView = new NewContactView();
+           NewContactViewModel = new NewContactViewModel();
 
            await navigationService.Navigate("NewContactView");
         }

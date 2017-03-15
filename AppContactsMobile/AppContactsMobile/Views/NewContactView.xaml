@@ -7,7 +7,7 @@
              BackgroundImage="fondosContact.jpg">
 
     <ScrollView
-        BindingContext="{Binding NewContactView}">
+        BindingContext="{Binding NewContactViewModel }">
         <StackLayout
             Padding="8">
             <Label TextColor="Coral"
@@ -43,14 +43,21 @@
             </ActivityIndicator>
             <StackLayout
                 Orientation="Horizontal">
-                <Button
+                <!--<Button
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding TakePictureCommand}"
                     IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     BackgroundColor="Orange"
                     TextColor="White"
                     Text="Take Picture">
-                </Button>
+                </Button>-->
+
+                <Image  HorizontalOptions="FillAndExpand" Source="ic_add_a_photo.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TakePictureCommand}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                
                 <Button
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding NewContactCommand}"

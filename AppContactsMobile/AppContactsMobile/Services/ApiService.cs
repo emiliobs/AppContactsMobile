@@ -73,7 +73,7 @@ namespace AppContactsMobile.Classes
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<List<T>>(result);
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
 
                 return new Response()
                 {
@@ -115,7 +115,7 @@ namespace AppContactsMobile.Classes
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<List<T>>(result);
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
 
                 return new Response()
                 {

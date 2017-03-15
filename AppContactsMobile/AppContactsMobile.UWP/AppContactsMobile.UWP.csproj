@@ -112,6 +112,7 @@
     <Content Include="contact.png" />
     <Content Include="fondosContact.jpg" />
     <AndroidResource Include="ic_action_add_location.png" />
+    <Content Include="ic_add_a_photo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Classes\Response.cs" />
@@ -53,7 +54,7 @@
     <Compile Include="Views\NewContactView.xaml.cs">
       <DependentUpon>NewContactView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewContactViewModel.cs" />
+    <Compile Include="ViewModel\NewContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">

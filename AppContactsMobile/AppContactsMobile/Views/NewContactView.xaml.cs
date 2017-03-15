@@ -9,12 +9,15 @@ using Xamarin.Forms.Xaml;
 
 namespace AppContactsMobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    
     public partial class NewContactView : ContentPage
     {
         public NewContactView()
         {
             InitializeComponent();
         }
+
+
+        
     }
 }
